@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	template="/WEB-INF/template/Template.xhtml">
+
+	<ui:define name="titulo">Gerenciar ???</ui:define>
+
+	<ui:define name="conteudo">
+
+		<f:metadata>
+			<f:viewAction action="#{gerenciador ??? Bean.inicializar}" />
+		</f:metadata>
+
+		<h:form>
+			<h1>
+				<h:outputFormat
+					value="#{gerenciador ??? Bean.editando ?
+				msg.titulo_editar : msg.titulo_novo}">
+				</h:outputFormat>
+			</h1>
+
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:button value="#{msg.comando_novo}"
+						outcome="/views/private/ ??? /Gerenciador ???" />
+
+					<p:commandButton value="#{msg.comando_salvar}"
+						action="#{gerenciador ??? Bean.salvar}" update="@form" />
+				</p:toolbarGroup>
+
+				<p:toolbarGroup align="right">
+					<p:button value="#{msg.comando_pesquisar}"
+						outcome="/views/private/ ??? /Pesquisar ???" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panelGrid columns="2" id="painel"
+				style="width: 100%; margin-top: 20px">
+
+				
+				
+			</p:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

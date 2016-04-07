@@ -1,0 +1,19 @@
+/* Telefones em landscape e abaixo */
+@media ( max-width : 480px) {
+	...
+}
+
+/* Telefone em paisagem a tablet em retrato */
+@media ( max-width : 767px) {
+	...
+}
+
+/* tablet em retrato a paisagem e desktop */
+@media (min-width: 768px), (max-width: 992px) {
+	...
+}
+
+/* Desktop grande */
+@media ( min-width : 1200px) {
+	...
+}

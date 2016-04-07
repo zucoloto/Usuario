@@ -1,0 +1,75 @@
+/* HEADER css-topbar */
+.css-header {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	min-height: 50px;
+	z-index: 9999;
+	background-color: #00510F;
+}
+
+.css-header>a>img {
+	margin-top: 3px;
+	margin-left: 5px;
+	width: 30px;
+}
+
+/* MENU css-sidebar*/
+.css-menu {
+	position: fixed;
+	top: 50px;
+	bottom: 0;
+	left: 0;
+	width: 210px;
+	margin-left: -211px;
+	z-index: 9998;
+	transition: margin-left 0.5s;
+	overflow-y: auto;
+	background-color: #f6f6f6;
+	border-right: 1px solid #eaeaea;
+}
+
+.css-menu.is-toggled {
+	margin-left: 0px;
+}
+
+/* CONTEUDO css-content */
+.css-conteudo {
+	padding: 0 15px;
+	margin-top: 50px;
+	transition: margin-left 0.5s;
+}
+
+/* FOOTER */
+.css-footer {
+	padding: 0 15px;
+	margin-top: 10px;
+	transition: margin-left 0.5s;
+}
+
+@media ( min-width : 960px) {
+	/* MENU */
+	.css-menu {
+		margin-left: 0px;
+	}
+	.css-menu.is-toggled {
+		margin-left: -211px;
+	}
+
+	/* CONTEUDO */
+	.css-conteudo {
+		margin-left: 210px;
+	}
+	.css-conteudo.is-toggled {
+		margin-left: 0;
+	}
+	
+	/* FOOTER */
+	.css-footer {
+		margin-left: 210px;
+	}
+	.css-footer.is-toggled {
+		margin-left: 0;
+	}
+}

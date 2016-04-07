@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	template="/WEB-INF/template/Template.xhtml">
+
+	<ui:define name="titulo">#{msg.usuario}</ui:define>
+
+	<ui:define name="conteudo">
+
+		<f:metadata>
+			<f:viewAction action="#{pesquisarUsuarioBean.inicializar}" />
+		</f:metadata>
+
+		<h:form id="frmPesquisa">
+
+			<h1>
+				<h:outputFormat value="#{msg.titulo_pesquisar}">
+					<f:param value="#{msg.usuario}" />
+				</h:outputFormat>
+			</h1>
+
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:commandButton value="#{msg.comando_pesquisar}"
+						action="#{pesquisarUsuarioBean.pesquisar}" update="@form" />
+				</p:toolbarGroup>
+
+				<p:toolbarGroup align="right">
+					<p:button value="#{msg.comando_novo}"
+						outcome="/views/private/usuario/GerenciadorUsuario" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:dataTable id="usuarioTable"
+				value="#{pesquisarUsuarioBean.usuarios}" var="usuario"
+				emptyMessage="#{msg.table_emptyMessage}" rows="10" paginator="true"
+				paginatorAlwaysVisible="false" paginatorPosition="bottom"
+				style="margin-top: 20px">
+
+				<p:column headerText="#{msg.identidade}">
+					<h:outputText value="#{usuario.identidade}" />
+				</p:column>
+
+				<p:column headerText="#{msg.posto_graduacao}">
+					<h:outputText value="#{usuario.postoGraduacao.sigla}" />
+				</p:column>
+
+				<p:column headerText="#{msg.nome_completo}"
+					sortBy="#{usuario.nomeUsuario}">
+					<h:outputText value="#{usuario.nomeUsuario}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
