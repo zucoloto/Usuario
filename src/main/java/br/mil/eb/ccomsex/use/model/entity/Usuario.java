@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -52,6 +53,10 @@ public class Usuario implements Serializable {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "use_usuario_role", joinColumns = @JoinColumn(name = "usuario_id") , inverseJoinColumns = @JoinColumn(name = "role_id") )
 	private List<Role> roles = new ArrayList<>();
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "use_usuario_fracao", joinColumns = @JoinColumn(name = "usuario_id") , inverseJoinColumns = @JoinColumn(name = "fracao_id") )
+	private List<Fracao> fracoes = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -126,6 +131,14 @@ public class Usuario implements Serializable {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public List<Fracao> getFracoes() {
+		return fracoes;
+	}
+
+	public void setFracoes(List<Fracao> fracoes) {
+		this.fracoes = fracoes;
 	}
 
 	@Override

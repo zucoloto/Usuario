@@ -7,6 +7,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
+
 import br.mil.eb.ccomsex.use.model.entity.Fracao;
 import br.mil.eb.ccomsex.use.model.service.FracaoService;
 
@@ -23,8 +26,24 @@ public class PesquisarFracaoBean implements Serializable {
 
 	private List<Fracao> fracoes;
 
+	private TreeNode raiz;
+
 	public void inicializar() {
-		pesquisar();
+		List<Fracao> fracaoRaizes = fracaoService.raizes();
+		this.raiz = new DefaultTreeNode("Raiz", null);
+		adicionarNos(fracaoRaizes, this.raiz);
+	}
+
+	private void adicionarNos(List<Fracao> fracoesNos, TreeNode pai) {
+		for (Fracao fracao : fracoesNos) {
+			TreeNode no = new DefaultTreeNode(fracao, pai);
+
+			adicionarNos(fracao.getSubFracoes(), no);
+		}
+	}
+
+	public TreeNode getRaiz() {
+		return raiz;
 	}
 
 	public void pesquisar() {

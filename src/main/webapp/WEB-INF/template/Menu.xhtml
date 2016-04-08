@@ -6,28 +6,24 @@
 
 	<div>
 		<h:form>
-			<p:menu toggleable="true" style="width:99%">
-				<p:menuitem value="Início" outcome="/views/private/Home" />
-
-				<p:submenu label="PG">
-					<p:menuitem value="Pesquisar"
-						outcome="/views/private/posto_graduacao/PesquisarPostoGraduacao" />
-				</p:submenu>
-				<p:submenu label="Usuário">
-					<p:menuitem value="Pesquisar"
-						outcome="/views/private/usuario/PesquisarUsuario" />
-				</p:submenu>
-			</p:menu>
-
-
 			<p:panelMenu style="width:98%">
-				<p:submenu label="Gerenciar">
-					<p:menuitem value="Save"
-						outcome="/views/private/posto_graduacao/PesquisarPostoGraduacao"
+				<p:submenu label="MENU">
+					<p:menuitem value="Início" outcome="/views/private/Home"
 						icon="ui-icon-disk" />
-					<p:menuitem value="Save"
-						outcome="/views/private/usuario/PesquisarUsuario"
-						icon="ui-icon-disk" />
+
+					<p:submenu label="Gerenciar">
+						<p:menuitem value="Posto/Grad"
+							outcome="/views/private/posto_graduacao/PesquisarPostoGraduacao"
+							icon="ui-icon-disk" />
+						<p:menuitem value="Usuário"
+							outcome="/views/private/usuario/PesquisarUsuario"
+							icon="ui-icon-disk" />
+						<p:menuitem value="Fração"
+							outcome="/views/private/fracao/PesquisarFracao"
+							icon="ui-icon-disk" />
+						<p:menuitem value="Role"
+							outcome="/views/private/role/PesquisarRole" icon="ui-icon-disk" />
+					</p:submenu>
 				</p:submenu>
 			</p:panelMenu>
 

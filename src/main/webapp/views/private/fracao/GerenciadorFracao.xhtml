@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	template="/WEB-INF/template/Template.xhtml">
 
-	<ui:define name="titulo">#{msg. ???}</ui:define>
+	<ui:define name="titulo">#{msg.fracao}</ui:define>
 
 	<ui:define name="conteudo">
 
@@ -18,6 +18,7 @@
 				<h:outputFormat
 					value="#{gerenciadorFracaoBean.editando ?
 				msg.titulo_editar : msg.titulo_novo}">
+					<f:param value="#{msg.fracao}" />
 				</h:outputFormat>
 			</h1>
 
@@ -39,8 +40,24 @@
 			<p:panelGrid columns="2" id="painel"
 				style="width: 100%; margin-top: 20px">
 
-				
-				
+				<p:outputLabel value="#{msg.ordem_qc}" for="qc" />
+				<p:inputText id="qc" size="20" maxlength="10"
+					value="#{gerenciadorFracaoBean.fracao.ordemQC}" />
+
+				<p:outputLabel value="#{msg.fracao}" for="fracao" />
+				<p:inputText id="fracao" size="50" maxlength="100"
+					value="#{gerenciadorFracaoBean.fracao.nomeFracao}" />
+
+				<p:outputLabel value="#{msg.fracao_sup}" for="superior" />
+				<p:selectOneMenu id="superior"
+					value="#{gerenciadorFracaoBean.fracao.fracaoPaiId}">
+					<f:selectItem itemLabel="#{msg.selectItem_itemLabel}"
+						noSelectionOption="true" />
+					<f:selectItems value="#{gerenciadorFracaoBean.fracoes}"
+						var="fracao" itemValue="#{fracao}"
+						itemLabel="#{fracao.ordemQC} - #{fracao.nomeFracao}" />
+				</p:selectOneMenu>
+
 			</p:panelGrid>
 
 		</h:form>

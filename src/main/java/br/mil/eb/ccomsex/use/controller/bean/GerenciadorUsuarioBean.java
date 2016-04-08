@@ -1,16 +1,21 @@
 package br.mil.eb.ccomsex.use.controller.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.mil.eb.ccomsex.use.model.entity.Fracao;
 import br.mil.eb.ccomsex.use.model.entity.PostoGraduacao;
+import br.mil.eb.ccomsex.use.model.entity.Role;
 import br.mil.eb.ccomsex.use.model.entity.StatusUsuario;
 import br.mil.eb.ccomsex.use.model.entity.Usuario;
+import br.mil.eb.ccomsex.use.model.service.FracaoService;
 import br.mil.eb.ccomsex.use.model.service.PostoGraduacaoService;
+import br.mil.eb.ccomsex.use.model.service.RoleService;
 import br.mil.eb.ccomsex.use.model.service.UsuarioService;
 import br.mil.eb.ccomsex.use.model.service.exception.NegocioException;
 import br.mil.eb.ccomsex.use.util.jsf.FacesUtil;
@@ -31,15 +36,29 @@ public class GerenciadorUsuarioBean implements Serializable {
 
 	private List<PostoGraduacao> postoGraduacoes;
 
+	@Inject
+	private FracaoService fracaoService;
+
+	private List<Fracao> fracoes;
+	
+	@Inject
+	private RoleService roleService;
+
+	private List<Role> roles;
+
 	public void inicializar() {
 		if (this.usuario == null) {
 			limpar();
 		}
 		carregarPostoGraduacao();
+		carregarFracao();
+		carregarRole();
 	}
 
 	public void limpar() {
 		this.usuario = new Usuario();
+		this.usuario.setFracoes(new ArrayList<Fracao>());
+		this.usuario.setRoles(new ArrayList<Role>());
 	}
 
 	public boolean isEditando() {
@@ -67,6 +86,14 @@ public class GerenciadorUsuarioBean implements Serializable {
 		this.postoGraduacoes = postoGraduacaoService.listarTodos();
 	}
 
+	public void carregarFracao() {
+		this.fracoes = fracaoService.listarTodos();
+	}
+	
+	public void carregarRole() {
+		this.roles = roleService.listarTodos();
+	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -77,6 +104,14 @@ public class GerenciadorUsuarioBean implements Serializable {
 
 	public List<PostoGraduacao> getPostoGraduacoes() {
 		return postoGraduacoes;
+	}
+
+	public List<Fracao> getFracoes() {
+		return fracoes;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
 	}
 
 }

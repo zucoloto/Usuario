@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	template="/WEB-INF/template/Template.xhtml">
 
-	<ui:define name="titulo">#{msg. ???}</ui:define>
+	<ui:define name="titulo">#{msg.role}</ui:define>
 
 	<ui:define name="conteudo">
 
@@ -16,8 +16,8 @@
 		<h:form id="frmPesquisa">
 
 			<h1>
-				<h:outputFormat value="#{msg. ???}">
-					<f:param value="#{msg. ???}" />
+				<h:outputFormat value="#{msg.titulo_pesquisar}">
+					<f:param value="#{msg.role}" />
 				</h:outputFormat>
 			</h1>
 
@@ -38,7 +38,13 @@
 				paginator="true" paginatorAlwaysVisible="false"
 				paginatorPosition="bottom" style="margin-top: 20px">
 
+				<p:column headerText="#{msg.role}">
+					<h:outputText value="#{role.nomeRole}" />
+				</p:column>
 
+				<p:column headerText="#{msg.descricao}">
+					<h:outputText value="#{role.descricao}" />
+				</p:column>
 
 			</p:dataTable>
 		</h:form>

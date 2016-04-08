@@ -1,6 +1,7 @@
 package br.mil.eb.ccomsex.use.controller.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -22,10 +23,13 @@ public class GerenciadorFracaoBean implements Serializable {
 
 	private Fracao fracao;
 
+	private List<Fracao> fracoes;
+
 	public void inicializar() {
 		if (this.fracao == null) {
 			limpar();
 		}
+		carregarFracoes();
 	}
 
 	public void limpar() {
@@ -49,12 +53,20 @@ public class GerenciadorFracaoBean implements Serializable {
 		}
 	}
 
+	public void carregarFracoes() {
+		this.fracoes = fracaoService.listarTodos();
+	}
+
 	public Fracao getFracao() {
 		return fracao;
 	}
 
 	public void setFracao(Fracao fracao) {
 		this.fracao = fracao;
+	}
+
+	public List<Fracao> getFracoes() {
+		return fracoes;
 	}
 
 }

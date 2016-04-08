@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	template="/WEB-INF/template/Template.xhtml">
 
-	<ui:define name="titulo">#{msg. ???}</ui:define>
+	<ui:define name="titulo">#{msg.fracao}</ui:define>
 
 	<ui:define name="conteudo">
 
@@ -16,8 +16,8 @@
 		<h:form id="frmPesquisa">
 
 			<h1>
-				<h:outputFormat value="#{msg. ???}">
-					<f:param value="#{msg. ???}" />
+				<h:outputFormat value="#{msg.titulo_pesquisar}">
+					<f:param value="#{msg.fracao}" />
 				</h:outputFormat>
 			</h1>
 
@@ -27,15 +27,20 @@
 						action="#{pesquisarFracaoBean.pesquisar}" update="@form" />
 				</p:toolbarGroup>
 
-				<p:toolbarGroup align="fracaoTable"
-					value="#{pesquisarFracaoBean.fracoes}" var="fracao"
-					emptyMessage="#{msg.table_emptyMessage}" rows="10" paginator="true"
-					paginatorAlwaysVisible="false" paginatorPosition="bottom"
-					style="margin-top: 20px">
+				<p:toolbarGroup align="right">
+					<p:button value="#{msg.comando_novo}"
+						outcome="/views/private/fracao/GerenciadorFracao" />
+				</p:toolbarGroup>
+			</p:toolbar>
 
+			<p:treeTable id="fracaoTable" value="#{pesquisarFracaoBean.raiz}"
+				var="fracao" scrollable="true" style="margin-top: 20px">
+				
+				<p:column headerText="#{msg.fracao}">
+					<h:outputText value="#{fracao.ordemQC} - #{fracao.nomeFracao}" />
+				</p:column>
 
-
-					</p:dataTable>
+			</p:treeTable>
 		</h:form>
 
 	</ui:define>

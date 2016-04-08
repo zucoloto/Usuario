@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	template="/WEB-INF/template/Template.xhtml">
 
-	<ui:define name="titulo">#{msg. ???}</ui:define>
+	<ui:define name="titulo">#{msg.role}</ui:define>
 
 	<ui:define name="conteudo">
 
@@ -18,6 +18,7 @@
 				<h:outputFormat
 					value="#{gerenciadorRoleBean.editando ?
 				msg.titulo_editar : msg.titulo_novo}">
+					<f:param value="#{msg.role}" />
 				</h:outputFormat>
 			</h1>
 
@@ -39,7 +40,13 @@
 			<p:panelGrid columns="2" id="painel"
 				style="width: 100%; margin-top: 20px">
 
+				<p:outputLabel value="#{msg.role}" for="role" />
+				<p:inputText id="role" size="50" maxlength="50"
+					value="#{gerenciadorRoleBean.role.nomeRole}" />
 
+				<p:outputLabel value="#{msg.descricao}" for="descricao" />
+				<p:inputText id="descricao" size="80" maxlength="100"
+					value="#{gerenciadorRoleBean.role.descricao}" />
 
 			</p:panelGrid>
 
