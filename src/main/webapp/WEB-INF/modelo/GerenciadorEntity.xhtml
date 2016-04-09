@@ -37,12 +37,17 @@
 				</p:toolbarGroup>
 			</p:toolbar>
 
-			<p:panelGrid columns="2" id="painel"
-				style="width: 100%; margin-top: 20px">
+			<div class="ui-fluid">
+				<p:panelGrid columns="2" id="nomePainel" layout="grid"
+					columnClasses="ui-grid-col-2, ui-grid-col-4"
+					styleClass="panelgrid-noborder" style="margin-top: 20px">
 
 
-
-			</p:panelGrid>
+					<f:facet name="footer">
+						<p:commandButton icon="ui-icon-pencil" value="Editar" />
+					</f:facet>
+				</p:panelGrid>
+			</div>
 
 		</h:form>
 

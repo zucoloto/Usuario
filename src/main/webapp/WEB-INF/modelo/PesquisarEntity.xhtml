@@ -34,7 +34,9 @@
 			</p:toolbar>
 
 			<p:dataTable id="??? Table" value="#{pesquisar ??? Bean. ???s}"
-				var=" ??? " emptyMessage="#{msg.table_emptyMessage}" rows="10"
+				var=" ??? " selectionMode="single"
+				selection="#{pesquisar ??? Bean. ???}" rowKey="#{entity.id}"
+				reflow="true" emptyMessage="#{msg.table_emptyMessage}" rows="10"
 				paginator="true" paginatorAlwaysVisible="false"
 				paginatorPosition="bottom" style="margin-top: 20px">
 

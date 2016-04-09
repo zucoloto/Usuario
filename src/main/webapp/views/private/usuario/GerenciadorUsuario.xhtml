@@ -37,117 +37,121 @@
 				</p:toolbarGroup>
 			</p:toolbar>
 
-			<p:panelGrid columns="2" id="painel"
-				style="width: 100%; margin-top: 20px">
+			<div class="ui-fluid">
+				<p:panelGrid columns="2" id="usuarioPainel" layout="grid"
+					columnClasses="ui-grid-col-2, ui-grid-col-4"
+					styleClass="panelgrid-noborder" style="margin-top: 20px">
 
-				<p:outputLabel value="#{msg.identidade}" for="idt" />
-				<p:inputText id="idt" size="20" maxlength="20"
-					value="#{gerenciadorUsuarioBean.usuario.identidade}" />
+					<p:outputLabel value="#{msg.identidade}" for="idt" />
+					<p:inputText id="idt" maxlength="20" style="width: 70%"
+						value="#{gerenciadorUsuarioBean.usuario.identidade}" />
 
-				<p:outputLabel value="#{msg.nome_completo}" for="nome" />
-				<p:inputText id="nome" size="60" maxlength="100"
-					value="#{gerenciadorUsuarioBean.usuario.nomeUsuario}" />
+					<p:outputLabel value="#{msg.nome_completo}" for="nome" />
+					<p:inputText id="nome" size="60" maxlength="100"
+						value="#{gerenciadorUsuarioBean.usuario.nomeUsuario}" />
 
-				<p:outputLabel value="#{msg.posto_graduacao}" for="pg" />
-				<p:selectOneMenu id="pg"
-					value="#{gerenciadorUsuarioBean.usuario.postoGraduacao}">
-					<f:selectItem itemLabel="#{msg.selectItem_itemLabel}"
-						noSelectionOption="true" />
-					<f:selectItems value="#{gerenciadorUsuarioBean.postoGraduacoes}"
-						var="postoGraduacao" itemValue="#{postoGraduacao}"
-						itemLabel="#{postoGraduacao.sigla}" />
-				</p:selectOneMenu>
+					<p:outputLabel value="#{msg.posto_graduacao}" for="pg" />
+					<p:selectOneMenu id="pg"
+						value="#{gerenciadorUsuarioBean.usuario.postoGraduacao}">
+						<f:selectItem itemLabel="#{msg.selectItem_itemLabel}"
+							noSelectionOption="true" />
+						<f:selectItems value="#{gerenciadorUsuarioBean.postoGraduacoes}"
+							var="postoGraduacao" itemValue="#{postoGraduacao}"
+							itemLabel="#{postoGraduacao.sigla}" />
+					</p:selectOneMenu>
 
-			</p:panelGrid>
+				</p:panelGrid>
 
-			<p:tabView>
-				<p:tab title="#{msg.geral}">
-					<p:panelGrid columns="2" id="painelGeral"
-						style="width: 100%; margin-top: 20px"
-						columnClasses="rotulo, campo" styleClass="panel-sem-bordas">
+				<p:tabView>
+					<p:tab title="#{msg.geral}">
+						<p:panelGrid columns="2" id="geralPainel" layout="grid"
+							columnClasses="ui-grid-col-2, ui-grid-col-4"
+							styleClass="panelgrid-noborder">
 
-						<p:outputLabel value="#{msg.email}" for="email" />
-						<p:inputText id="email" size="60" maxlength="250"
-							value="#{gerenciadorUsuarioBean.usuario.email}" />
+							<p:outputLabel value="#{msg.email}" for="email" />
+							<p:inputText id="email" size="60" maxlength="250"
+								value="#{gerenciadorUsuarioBean.usuario.email}" />
 
-						<p:outputLabel value="#{msg.status}" for="status" />
-						<p:selectOneMenu id="status"
-							value="#{gerenciadorUsuarioBean.usuario.statusUsuario}">
-							<f:selectItem itemLabel="#{msg.selectItem_itemLabel}"
-								noSelectionOption="true" />
-							<f:selectItems value="#{gerenciadorUsuarioBean.statusUsuario}"
-								var="status" itemValue="#{status}"
-								itemLabel="#{status.descricao}" />
-						</p:selectOneMenu>
-					</p:panelGrid>
-				</p:tab>
+							<p:outputLabel value="#{msg.status}" for="status" />
+							<p:selectOneMenu id="status"
+								value="#{gerenciadorUsuarioBean.usuario.statusUsuario}">
+								<f:selectItem itemLabel="#{msg.selectItem_itemLabel}"
+									noSelectionOption="true" />
+								<f:selectItems value="#{gerenciadorUsuarioBean.statusUsuario}"
+									var="status" itemValue="#{status}"
+									itemLabel="#{status.descricao}" />
+							</p:selectOneMenu>
+						</p:panelGrid>
+					</p:tab>
 
-				<p:tab title="#{msg.senha}">
-					<p:panelGrid columns="2" id="painelSenha"
-						style="width: 100%; margin-top: 20px"
-						columnClasses="rotulo, campo" styleClass="panel-sem-bordas">
+					<p:tab title="#{msg.senha}">
+						<p:panelGrid columns="2" id="senhaPainel" layout="grid"
+							columnClasses="ui-grid-col-2, ui-grid-col-4"
+							styleClass="panelgrid-noborder">
 
-						<p:outputLabel value="#{msg.senha}" for="senha" />
-						<p:password id="senha" match="confirmarSenha"
-							value="#{gerenciadorUsuarioBean.usuario.senha}" redisplay="true" />
+							<p:outputLabel value="#{msg.senha}" for="senha" />
+							<p:password id="senha" match="confirmarSenha"
+								value="#{gerenciadorUsuarioBean.usuario.senha}" redisplay="true" />
 
-						<p:outputLabel value="#{msg.confirmar_senha}" for="confirmarSenha" />
-						<p:password id="confirmarSenha"
-							value="#{gerenciadorUsuarioBean.usuario.senha}" redisplay="true" />
-					</p:panelGrid>
-				</p:tab>
+							<p:outputLabel value="#{msg.confirmar_senha}"
+								for="confirmarSenha" />
+							<p:password id="confirmarSenha"
+								value="#{gerenciadorUsuarioBean.usuario.senha}" redisplay="true" />
+						</p:panelGrid>
+					</p:tab>
 
-				<p:tab title="#{msg.fracao}">
-					<p:panelGrid columns="2" id="fracaoPainel"
-						style="width: 100%; margin-top: 20px"
-						columnClasses="rotulo, campo" styleClass="panel-sem-bordas">
+					<p:tab title="#{msg.fracao}">
+						<p:panelGrid columns="2" id="fracaoPainel" layout="grid"
+							columnClasses="ui-grid-col-4, ui-grid-col-2"
+							styleClass="panelgrid-noborder">
 
-						<p:selectOneMenu id="fracao"
-							value="#{gerenciadorUsuarioBean.fracao}"
-							converter="fracaoConverter">
-							<f:selectItem itemLabel="#{msg.selectItem_itemLabel}"
-								noSelectionOption="true" />
-							<f:selectItems value="#{gerenciadorUsuarioBean.fracoes}"
-								var="fracao" itemValue="#{fracao}"
-								itemLabel="#{fracao.ordemQC} - #{fracao.nomeFracao}" />
-						</p:selectOneMenu>
+							<p:selectOneMenu id="fracao"
+								value="#{gerenciadorUsuarioBean.fracao}"
+								converter="fracaoConverter">
+								<f:selectItem itemLabel="#{msg.selectItem_itemLabel}"
+									noSelectionOption="true" />
+								<f:selectItems value="#{gerenciadorUsuarioBean.fracoes}"
+									var="fracao" itemValue="#{fracao}"
+									itemLabel="#{fracao.ordemQC} - #{fracao.nomeFracao}" />
+							</p:selectOneMenu>
 
-						<p:commandButton value="#{msg.comando_adicionar}"
-							icon="#{msg.icon_adicionar}"
-							action="#{gerenciadorUsuarioBean.adicionarFracao}"
-							update="fracaoTable" process="@parent"/>
+							<p:commandButton value="#{msg.comando_adicionar}"
+								icon="#{msg.icon_adicionar}"
+								action="#{gerenciadorUsuarioBean.adicionarFracao}"
+								update="fracaoTable" process="@parent" style="width: auto" />
 
-					</p:panelGrid>
+						</p:panelGrid>
 
-					<p:dataTable id="fracaoTable"
-						value="#{gerenciadorUsuarioBean.usuario.fracoes}" var="fracao"
-						emptyMessage="#{msg.table_emptyMessage}" rows="10"
-						paginator="true" paginatorAlwaysVisible="false"
-						paginatorPosition="bottom" style="margin-top: 20px">
+						<p:dataTable id="fracaoTable"
+							value="#{gerenciadorUsuarioBean.usuario.fracoes}" var="fracao"
+							emptyMessage="#{msg.table_emptyMessage}" rows="10"
+							paginator="true" paginatorAlwaysVisible="false"
+							paginatorPosition="bottom" style="margin-top: 20px">
 
-						<p:column headerText="#{msg.fracao}">
-							<h:outputText value="#{fracao.ordemQC} - #{fracao.nomeFracao}" />
-						</p:column>
+							<p:column headerText="#{msg.fracao}">
+								<h:outputText value="#{fracao.ordemQC} - #{fracao.nomeFracao}" />
+							</p:column>
 
-						<p:column headerText="#{msg.fracao_sup}">
-							<h:outputText
-								value="#{fracao.fracaoPaiId.ordemQC} - #{fracao.fracaoPaiId.nomeFracao}" />
-						</p:column>
+							<p:column headerText="#{msg.fracao_sup}">
+								<h:outputText
+									value="#{fracao.fracaoPaiId.ordemQC} - #{fracao.fracaoPaiId.nomeFracao}" />
+							</p:column>
 
-					</p:dataTable>
-				</p:tab>
+						</p:dataTable>
+					</p:tab>
 
-				<p:tab title="#{msg.role}">
-					<p:selectManyCheckbox id="role"
-						value="#{gerenciadorUsuarioBean.usuario.roles}"
-						converter="roleConverter" layout="responsive" columns="1">
-						<f:selectItems value="#{gerenciadorUsuarioBean.roles}" var="role"
-							itemLabel="#{role.nomeRole} - #{role.descricao}" itemValue="#{role}" />
-					</p:selectManyCheckbox>
-				</p:tab>
+					<p:tab title="#{msg.role}">
+						<p:selectManyCheckbox id="role"
+							value="#{gerenciadorUsuarioBean.usuario.roles}"
+							converter="roleConverter" layout="responsive" columns="1">
+							<f:selectItems value="#{gerenciadorUsuarioBean.roles}" var="role"
+								itemLabel="#{role.nomeRole} - #{role.descricao}"
+								itemValue="#{role}" />
+						</p:selectManyCheckbox>
+					</p:tab>
 
-			</p:tabView>
-
+				</p:tabView>
+			</div>
 		</h:form>
 
 	</ui:define>

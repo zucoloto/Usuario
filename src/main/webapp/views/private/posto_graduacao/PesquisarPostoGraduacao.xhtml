@@ -35,21 +35,28 @@
 
 			<p:dataTable id="postoGraduacaoTable"
 				value="#{pesquisarPostoGraduacaoBean.postoGraduacoes}"
-				var="postoGraduacao" emptyMessage="Nenhum Registro" rows="10"
-				paginator="true" paginatorAlwaysVisible="false"
-				paginatorPosition="bottom" style="margin-top: 20px">
+				var="postoGraduacao" selectionMode="single"
+				selection="#{pesquisarPostoGraduacaoBean.postoGraduacao}"
+				rowKey="#{postoGraduacao.id}" reflow="true"
+				emptyMessage="Nenhum Registro" rows="10" paginator="true"
+				paginatorAlwaysVisible="false" paginatorPosition="bottom"
+				style="margin-top: 20px">
 
-				<p:column headerText="#{msg.codigo}">
+				<p:column headerText="#{msg.codigo}" priority="2">
 					<h:outputText value="#{postoGraduacao.codigo}" />
 				</p:column>
 
-				<p:column headerText="#{msg.descricao}">
+				<p:column headerText="#{msg.descricao}" priority="6">
 					<h:outputText value="#{postoGraduacao.descricao}" />
 				</p:column>
 
 				<p:column headerText="#{msg.sigla}">
 					<h:outputText value="#{postoGraduacao.sigla}" />
 				</p:column>
+
+				<f:facet name="footer">
+					<p:commandButton icon="ui-icon-pencil" value="Editar" />
+				</f:facet>
 			</p:dataTable>
 		</h:form>
 
