@@ -9,7 +9,8 @@ import javax.inject.Inject;
 import br.mil.eb.ccomsex.use.model.entity.Fracao;
 import br.mil.eb.ccomsex.use.model.repository.FracaoRepository;
 
-@FacesConverter(forClass = Fracao.class)
+//@FacesConverter(forClass = Fracao.class)
+@FacesConverter("fracaoConverter")
 public class FracaoConverter implements Converter {
 
 	@Inject

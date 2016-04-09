@@ -103,7 +103,8 @@
 						columnClasses="rotulo, campo" styleClass="panel-sem-bordas">
 
 						<p:selectOneMenu id="fracao"
-							value="#{gerenciadorUsuarioBean.usuario.fracoes}">
+							value="#{gerenciadorUsuarioBean.fracao}"
+							converter="fracaoConverter">
 							<f:selectItem itemLabel="#{msg.selectItem_itemLabel}"
 								noSelectionOption="true" />
 							<f:selectItems value="#{gerenciadorUsuarioBean.fracoes}"
@@ -111,7 +112,10 @@
 								itemLabel="#{fracao.ordemQC} - #{fracao.nomeFracao}" />
 						</p:selectOneMenu>
 
-						
+						<p:commandButton value="#{msg.comando_adicionar}"
+							icon="#{msg.icon_adicionar}"
+							action="#{gerenciadorUsuarioBean.adicionarFracao}"
+							update="fracaoTable" process="@parent"/>
 
 					</p:panelGrid>
 
@@ -132,7 +136,16 @@
 
 					</p:dataTable>
 				</p:tab>
-				
+
+				<p:tab title="#{msg.role}">
+					<p:selectManyCheckbox id="role"
+						value="#{gerenciadorUsuarioBean.usuario.roles}"
+						converter="roleConverter" layout="responsive" columns="1">
+						<f:selectItems value="#{gerenciadorUsuarioBean.roles}" var="role"
+							itemLabel="#{role.nomeRole} - #{role.descricao}" itemValue="#{role}" />
+					</p:selectManyCheckbox>
+				</p:tab>
+
 			</p:tabView>
 
 		</h:form>

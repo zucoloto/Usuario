@@ -9,7 +9,8 @@ import javax.inject.Inject;
 import br.mil.eb.ccomsex.use.model.entity.Role;
 import br.mil.eb.ccomsex.use.model.repository.RoleRepository;
 
-@FacesConverter(forClass = Role.class)
+//@FacesConverter(forClass = Role.class)
+@FacesConverter("roleConverter")
 public class RoleConverter implements Converter {
 
 	@Inject

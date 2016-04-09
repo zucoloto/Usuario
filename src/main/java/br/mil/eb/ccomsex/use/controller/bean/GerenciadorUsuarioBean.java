@@ -39,8 +39,10 @@ public class GerenciadorUsuarioBean implements Serializable {
 	@Inject
 	private FracaoService fracaoService;
 
+	private Fracao fracao;
+
 	private List<Fracao> fracoes;
-	
+
 	@Inject
 	private RoleService roleService;
 
@@ -78,6 +80,16 @@ public class GerenciadorUsuarioBean implements Serializable {
 		}
 	}
 
+	public void adicionarFracao() {
+		this.usuario.getFracoes().add(fracao);
+		//fracoes.remove(fracao);
+	}
+
+	public void excluirFracao() {
+		usuario.getFracoes().remove(fracao);
+		//fracoes.add(fracao);
+	}
+
 	public StatusUsuario[] getStatusUsuario() {
 		return StatusUsuario.values();
 	}
@@ -89,7 +101,7 @@ public class GerenciadorUsuarioBean implements Serializable {
 	public void carregarFracao() {
 		this.fracoes = fracaoService.listarTodos();
 	}
-	
+
 	public void carregarRole() {
 		this.roles = roleService.listarTodos();
 	}
@@ -104,6 +116,14 @@ public class GerenciadorUsuarioBean implements Serializable {
 
 	public List<PostoGraduacao> getPostoGraduacoes() {
 		return postoGraduacoes;
+	}
+
+	public Fracao getFracao() {
+		return fracao;
+	}
+
+	public void setFracao(Fracao fracao) {
+		this.fracao = fracao;
 	}
 
 	public List<Fracao> getFracoes() {

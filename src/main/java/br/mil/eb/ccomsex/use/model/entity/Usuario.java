@@ -54,9 +54,9 @@ public class Usuario implements Serializable {
 	@JoinTable(name = "use_usuario_role", joinColumns = @JoinColumn(name = "usuario_id") , inverseJoinColumns = @JoinColumn(name = "role_id") )
 	private List<Role> roles = new ArrayList<>();
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "use_usuario_fracao", joinColumns = @JoinColumn(name = "usuario_id") , inverseJoinColumns = @JoinColumn(name = "fracao_id") )
-	private List<Fracao> fracoes = new ArrayList<>();
+	private List<Fracao> fracoes;
 
 	public Long getId() {
 		return id;
