@@ -11,6 +11,7 @@ import br.mil.eb.ccomsex.use.model.entity.PostoGraduacao;
 import br.mil.eb.ccomsex.util.jpa.JPAUtil;
 
 public class PostoGraduacaoCadastrar {
+
 	private EntityManager entityManager;
 	private EntityTransaction trx;
 
@@ -31,8 +32,8 @@ public class PostoGraduacaoCadastrar {
 	public void Executar() {
 		PostoGraduacao pg = new PostoGraduacao();
 		pg.setCodigo("1");
-		pg.setDescricao("General de Exército");
-		pg.setSigla("Gen Ex");
+		pg.setDescricao("Subtenente");
+		pg.setSigla("S Ten");
 
 		entityManager.persist(pg);
 	}

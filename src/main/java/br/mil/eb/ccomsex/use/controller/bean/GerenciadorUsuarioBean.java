@@ -8,6 +8,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.mil.eb.ccomsex.use.model.entity.Endereco;
+import br.mil.eb.ccomsex.use.model.entity.Estado;
 import br.mil.eb.ccomsex.use.model.entity.Fracao;
 import br.mil.eb.ccomsex.use.model.entity.PostoGraduacao;
 import br.mil.eb.ccomsex.use.model.entity.Role;
@@ -59,6 +61,7 @@ public class GerenciadorUsuarioBean implements Serializable {
 
 	public void limpar() {
 		this.usuario = new Usuario();
+		this.usuario.setEndereco(new Endereco());
 		this.usuario.setFracoes(new ArrayList<Fracao>());
 		this.usuario.setRoles(new ArrayList<Role>());
 	}
@@ -69,6 +72,7 @@ public class GerenciadorUsuarioBean implements Serializable {
 
 	public void salvar() {
 		try {
+			this.usuario.getEndereco().setUsuario(usuario);
 			usuarioService.salvar(this.usuario);
 			limpar();
 			FacesUtil.addInfoMessage(FacesUtil.getMensagemI18n("registro_salvo"));
@@ -82,16 +86,20 @@ public class GerenciadorUsuarioBean implements Serializable {
 
 	public void adicionarFracao() {
 		this.usuario.getFracoes().add(fracao);
-		//fracoes.remove(fracao);
+		// fracoes.remove(fracao);
 	}
 
 	public void excluirFracao() {
 		usuario.getFracoes().remove(fracao);
-		//fracoes.add(fracao);
+		// fracoes.add(fracao);
 	}
 
 	public StatusUsuario[] getStatusUsuario() {
 		return StatusUsuario.values();
+	}
+
+	public Estado[] getEstado() {
+		return Estado.values();
 	}
 
 	public void carregarPostoGraduacao() {

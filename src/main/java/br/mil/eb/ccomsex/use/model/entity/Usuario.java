@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -50,13 +52,19 @@ public class Usuario implements Serializable {
 
 	private String senha;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "use_usuario_role", joinColumns = @JoinColumn(name = "usuario_id") , inverseJoinColumns = @JoinColumn(name = "role_id") )
-	private List<Role> roles = new ArrayList<>();
+	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private Endereco endereco;
+
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private List<Telefone> telefones;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "use_usuario_fracao", joinColumns = @JoinColumn(name = "usuario_id") , inverseJoinColumns = @JoinColumn(name = "fracao_id") )
 	private List<Fracao> fracoes;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "use_usuario_role", joinColumns = @JoinColumn(name = "usuario_id") , inverseJoinColumns = @JoinColumn(name = "role_id") )
+	private List<Role> roles = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -125,12 +133,20 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	public List<Role> getRoles() {
-		return roles;
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public List<Telefone> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
 	}
 
 	public List<Fracao> getFracoes() {
@@ -139,6 +155,14 @@ public class Usuario implements Serializable {
 
 	public void setFracoes(List<Fracao> fracoes) {
 		this.fracoes = fracoes;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 	@Override
